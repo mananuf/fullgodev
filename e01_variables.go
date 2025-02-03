@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var version = 1
 
@@ -26,4 +28,44 @@ func main () {
 
 	fmt.Println(description)
 	fmt.Println(version, newVersion, gender, lastname, firstname, age, maritalStatus, dateOfBirth)
+
+	// arrays
+	// arrays in go are fixedSized by default
+	var fixedSizeArray [5]uint8
+	fmt.Println(fixedSizeArray)
+
+	fixedSizeArray[0] = 1
+	fixedSizeArray[1] = 2
+	fixedSizeArray[2] = 3
+	fixedSizeArray[3] = 4
+	fixedSizeArray[4] = 5
+	// fixedSizeArray[5] = 6 // out of bounds
+
+	fmt.Println(fixedSizeArray)
+
+	// slices
+	// slices in go are used to create dynamicSized arrays
+	fruits := []string{
+		"Apple",
+		"Banana",
+		"Oranges",
+		"papaya",
+	}
+
+	fmt.Println(fruits)
+
+	slicedFruits := fruits[0:2]
+	fmt.Println(slicedFruits)
+
+	slicedFruits = append(slicedFruits, "mango", "strawberry")
+	fmt.Println(slicedFruits)
+
+	newFruits := []string{
+		"pawpaw",
+		"tangerine",
+		"pineapple",
+	}
+
+	copy(slicedFruits, newFruits)
+	fmt.Println(slicedFruits)
 }
