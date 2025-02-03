@@ -14,10 +14,16 @@ var (
 	maritalStatus bool = false
 )
 
+const gender string = "male"
+
 func main () {
 
 	// var variableName type = value;
 	var newVersion uint8 = 2
 
-	fmt.Println(version, newVersion)
+	//or
+	description := "this is the story of my go dev life. a full paid course by my mentor devlongs"
+
+	fmt.Println(description)
+	fmt.Println(version, newVersion, gender, lastname, firstname, age, maritalStatus, dateOfBirth)
 }
