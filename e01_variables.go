@@ -9,16 +9,23 @@ var version = 1
 // or
 
 var (
-	firstname string = "mananaf"
-	lastname string = "bankat"
-	age uint8 = 20
-	dateOfBirth string = "10th October"
-	maritalStatus bool = false
+	firstname       string = "mananaf"
+	lastname        string = "bankat"
+	age             uint8  = 20
+	dateOfBirth     string = "10th October"
+	maritalStatus   bool   = false
+	mixedFillenings bool   = true
+	libraryuse      string = "hello"
+	secretMystery   rune   = 'a'
+	byteVar         byte   = 0x12
 )
 
 const gender string = "male"
 
-func main () {
+func main() {
+
+	//format specifiers
+	fmt.Printf("%v\n %#v\n", firstname, age)
 
 	// var variableName type = value;
 	var newVersion uint8 = 2
