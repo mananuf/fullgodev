@@ -16,7 +16,7 @@ var (
 	maritalStatus   bool   = false
 	mixedFillenings bool   = true
 	libraryuse      string = "hello"
-	secretMystery   rune   = 'a'
+	secretMystery   rune   = 'a' // used to represent unicode character. Unicode is actually the collection of all possible characters
 	byteVar         byte   = 0x12
 )
 
