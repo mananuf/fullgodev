@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+// """
+// NB: 
+// 	- 1. In Go, strings are actually made up of sequences of bytes, not a sequence of rune.
+//"""
+
 var version = 1
 
 // or
@@ -75,4 +80,15 @@ func main() {
 
 	copy(slicedFruits, newFruits)
 	fmt.Println(slicedFruits)
+
+	emoji := '😀'
+	var freeze rune = '🥶'
+	fmt.Printf("type of %c is %T", emoji, emoji)
+	fmt.Printf("\ntype of %c is %T", freeze, freeze)
+
+	byteSlice := []byte(dateOfBirth)
+	runeSlice := []rune(dateOfBirth)
+
+	fmt.Printf("\n%v\n%T", byteSlice, byteSlice)
+	fmt.Printf("\n%v\n%T", runeSlice, byteSlice)
 }
