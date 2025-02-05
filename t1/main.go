@@ -70,8 +70,9 @@ func main() {
 	fmt.Printf("%+v\n", book3)
 	fmt.Println(">>>>>>>>>>>> deleted a book")
 	fmt.Printf("%+v\n", book3)
-	book3.updateBookTitle("Protocol Basics")
-	book3.updateBookAuthor("devlongs")
+	book3.updateBook("title", "Protocol Basics")
+	book3.updateBook("author","devlongs")
+	book3.updateBook("price","devlongs")
 	fmt.Println(">>>>>>>>>>>> updated a book")
 	fmt.Printf("%+v\n", book3)
 	fmt.Println(">>>>>>>>>>>> discounted price")
@@ -116,22 +117,41 @@ func (book *Book) deleteBook() *Book {
 	return nil
 }
 
-func (book *Book) updateBookTitle(title string) Book {
-	book.Title = title
+// todo: refactor
+func (book *Book) updateBook(key string, value interface{}) {
+	switch key {
+	case "title":
+		title, ok := value.(string)
+		if !ok {
+			fmt.Printf("%v: title must be a string\n", value)
+			return
+		}
 
-	return *book
-}
+		book.Title = title
 
-func (book *Book) updateBookAuthor(author string) Book {
-	book.Author = author
+	case "author":
+		author, ok := value.(string)
+		if !ok {
+			fmt.Printf("%v: author field must be a string\n", value)
+			return
+		}
 
-	return *book
-}
+		book.Author = author
 
-func (book *Book) updateBookPrice(price float64) Book {
-	book.Price = price
+	case "price":
+		price, ok := value.(float64)
+		if !ok {
+			fmt.Printf("%v: price field must be a float\n", value)
+			return
+		}
 
-	return *book
+		book.Price = price
+
+	default:
+		fmt.Printf("%v is an invalid param\n", key)
+	}
+
+	// return *book
 }
 
 func (book *Book) calculateDiscount(qty float64, discount float64) float64 {

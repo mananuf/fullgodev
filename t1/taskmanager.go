@@ -25,9 +25,10 @@ func main() {
 	addNewTask("bath")
 	addNewTask("sleep")
 	addNewTask("eat")
-	updateTask(4, Done)
-	updateTask(2, Done)
-	updateTask(3, InProgress)
+	updateTask(4, "status", Done)
+	updateTask(2, "status", Done)
+	updateTask(3, "status", InProgress)
+	updateTask(2, "title", "i want to take a nap")
 	fmt.Println(allTasks[2])
 	fmt.Println(allTasks[3])
 }
@@ -45,7 +46,7 @@ func addNewTask(title string) {
 	}
 }
 
-func updateTask(taskId uint, status Status) {
+func updateTask(taskId uint, key string, value interface{}) {
 	if allTasks == nil {
 		fmt.Println("No available Tasks at the moment")
 		return
@@ -58,5 +59,22 @@ func updateTask(taskId uint, status Status) {
 		return
 	}
 
-	task.status = status
+	switch key {
+	case "title":
+		str, ok := value.(string)
+		if !ok {
+			return
+		}
+		task.title = str
+
+		return
+	case "status":
+		status, ok := value.(Status)
+		if !ok {
+			return
+		}
+		task.status = status
+
+		return
+	}
 }
